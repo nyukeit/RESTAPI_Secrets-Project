@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Secrets Project - REST APIs</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #get {
+      background-color: brown;
+    }
+    #post {
+      background-color: blue;
+    }
+    #put {
+      background-color: blueviolet;
+    }
+    #patch {
+      background-color: coral;
+    }
+    #delete {
+      background-color: darkgreen;
+    }
+    .display {
+      background-color: white;
+      padding: 20px;
+      width: 50%;
+    }
+    .result {
+      background-color: lightgray;
+      padding: 20px;
+    }
+    input[type = text] {
+      display: block;
+      margin: 20px 0;
+    }
+    input[type = submit] {
+      background: none;
+      border: none;
+      padding: 10px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="display">
+    <div class="result">
+      <% if (locals.result) { %>
+        <p><%=result%></p>
+      <% } else { %>
+        <p>This is where the secret will be displayed.</p>
+      <% } %>
+    </div>
+    <div class="form">
+      <form action="/" method="POST">
+        <input type="text" name="secretid" placeholder="id" />
+        <input type="text" name="secretmessage" placeholder="secret" />
+        <input type="text" name="embscore" placeholder="score" />
+        <div class="buttons">
+          <button id="get" onclick="window.location.href='/get-secret'">GET</button>
+          <input type="submit" name="post" value="POST" id="post" />
+          <input type="submit" name="put" value="PUT" id="put" />
+          <input type="submit" name="patch" value="PATCH" id="patch" />
+          <input type="submit" name="delete" value="DELETE" id="delete" />
+        </div>
+      </form>
+      <div class="instructions">
+        <h4>Instructions</h4>
+        <ol>
+          <li>Secret IDs range from 1-50 by default</li>
+          <li>To get a secret, use any number between 1-50 and use the GET request</li>
+          <li>To add a new Secret use any ID post 50, fill in the Secret and an Embarassment Score and use the POST request.</li>
+          <li>To Edit the newly added Secret, use the ID and modify the embarassment score, use the PATCH request.</li>
+          <li>To Replace the secret and embarassment score for the same ID, use the PUT request.</li>
+          <li>To Delete the newly created secret, use the DELETE request.</li>
+        </ol>
+      </div>
+  </div>
+</body>
+</html>
